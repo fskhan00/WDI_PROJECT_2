@@ -1,7 +1,12 @@
-function staticsHomepage(req, res) {
-  res.render('statics/homepage');
+const User = require('../models/user');
+
+function staticsIndex(req, res) {
+  User
+    .find()
+    .exec()
+    .then((users) => res.render('statics/index', { users }));
 }
 
 module.exports = {
-  homepage: staticsHomepage
+  index: staticsIndex
 };
